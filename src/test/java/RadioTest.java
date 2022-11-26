@@ -18,7 +18,7 @@ public class RadioTest {
     }
 
     @Test
-    public void RadioStationConstNext() {
+    public void RadioConstNext() {
         Radio radio = new Radio(75, 100);
         radio.setCurrentStation(74);
         radio.setCurrentVolume(100);
@@ -33,7 +33,7 @@ public class RadioTest {
     }
 
     @Test
-    public void RadioStationConstPrev() {
+    public void RadioConstPrev() {
         Radio radio = new Radio(60, 0);
         radio.setCurrentStation(0);
         radio.setCurrentVolume(0);
