@@ -5,6 +5,50 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
+    public void RadioConst() {
+        Radio radio = new Radio(50, 100);
+        radio.setCurrentStation(35);
+        radio.setCurrentVolume(77);
+        int expectedStations = 35;
+        int actualStations = radio.getCurrentStation();
+        int expectedVolume = 77;
+        int actualVolume = radio.getCurrentVolume();
+        Assertions.assertEquals(expectedStations, actualStations);
+        Assertions.assertEquals(expectedVolume, actualVolume);
+    }
+
+    @Test
+    public void RadioConstNext() {
+        Radio radio = new Radio(75, 100);
+        radio.setCurrentStation(74);
+        radio.setCurrentVolume(100);
+        radio.next();
+        radio.increaseVolume();
+        int expectedStations = 0;
+        int actualStations = radio.getCurrentStation();
+        int expectedVolume = 100;
+        int actualVolume = radio.getCurrentVolume();
+        Assertions.assertEquals(expectedStations, actualStations);
+        Assertions.assertEquals(expectedVolume, actualVolume);
+    }
+
+    @Test
+    public void RadioConstPrev() {
+        Radio radio = new Radio(60, 0);
+        radio.setCurrentStation(0);
+        radio.setCurrentVolume(0);
+        radio.prev();
+        radio.reduceVolume();
+        int expectedStations = 59;
+        int actualStations = radio.getCurrentStation();
+        int expectedVolume = 0;
+        int actualVolume = radio.getCurrentVolume();
+        Assertions.assertEquals(expectedStations, actualStations);
+        Assertions.assertEquals(expectedVolume, actualVolume);
+    }
+
+
+    @Test
     public void RadioOperation() {
         Radio radio = new Radio();
         radio.setCurrentStation(9);
@@ -72,6 +116,7 @@ public class RadioTest {
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
+
 
     @Test
     public void BorderStationNext() {
