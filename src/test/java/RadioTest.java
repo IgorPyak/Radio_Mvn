@@ -5,32 +5,46 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
-    public void RadioStationConst() {
-        Radio radio = new Radio(50);
+    public void RadioConst() {
+        Radio radio = new Radio(50, 100);
         radio.setCurrentStation(35);
-        int expected = 35;
-        int actual = radio.getCurrentStation();
-        Assertions.assertEquals(expected, actual);
+        radio.setCurrentVolume(77);
+        int expectedStations = 35;
+        int actualStations = radio.getCurrentStation();
+        int expectedVolume = 77;
+        int actualVolume = radio.getCurrentVolume();
+        Assertions.assertEquals(expectedStations, actualStations);
+        Assertions.assertEquals(expectedVolume, actualVolume);
     }
 
     @Test
     public void RadioStationConstNext() {
-        Radio radio = new Radio(75);
+        Radio radio = new Radio(75, 100);
         radio.setCurrentStation(74);
+        radio.setCurrentVolume(100);
         radio.next();
-        int expected = 0;
-        int actual = radio.getCurrentStation();
-        Assertions.assertEquals(expected, actual);
+        radio.increaseVolume();
+        int expectedStations = 0;
+        int actualStations = radio.getCurrentStation();
+        int expectedVolume = 100;
+        int actualVolume = radio.getCurrentVolume();
+        Assertions.assertEquals(expectedStations, actualStations);
+        Assertions.assertEquals(expectedVolume, actualVolume);
     }
 
     @Test
     public void RadioStationConstPrev() {
-        Radio radio = new Radio(60);
+        Radio radio = new Radio(60, 0);
         radio.setCurrentStation(0);
+        radio.setCurrentVolume(0);
         radio.prev();
-        int expected = 59;
-        int actual = radio.getCurrentStation();
-        Assertions.assertEquals(expected, actual);
+        radio.reduceVolume();
+        int expectedStations = 59;
+        int actualStations = radio.getCurrentStation();
+        int expectedVolume = 0;
+        int actualVolume = radio.getCurrentVolume();
+        Assertions.assertEquals(expectedStations, actualStations);
+        Assertions.assertEquals(expectedVolume, actualVolume);
     }
 
 

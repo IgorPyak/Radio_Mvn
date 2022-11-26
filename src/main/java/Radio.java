@@ -2,13 +2,16 @@ public class Radio {
     protected int currentStation;
     protected int currentVolume;
     protected int maxStation;
+    protected int maxVolume;
 
     public Radio() {
         this.maxStation = 9;
+        this.maxVolume = 10;
     }
 
-    public Radio(int stationsCount) {
+    public Radio(int stationsCount, int volumeCount) {
         this.maxStation = stationsCount - 1;
+        this.maxVolume = volumeCount;
     }
 
     public void next() {
@@ -28,10 +31,10 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume++;
         } else {
-            currentVolume = 10;
+            currentVolume = maxVolume;
         }
     }
 
@@ -65,7 +68,7 @@ public class Radio {
         if (currentVolume < 0) {
             return;
         }
-        if (currentVolume > 10) {
+        if (currentVolume > maxVolume) {
             return;
         }
         this.currentVolume = currentVolume;
